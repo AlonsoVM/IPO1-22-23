@@ -1,0 +1,9 @@
+﻿<Senderistas>
+	<Senderista nombreS="Hasbulla Magomedov" dni="05365410P" telefono="612457814" correo="hasbullaMagomedov@gmail.com"
+		   cuentaBancaria="ES4700502987152465005812" cuantiaAyuda="500" formaPago="Tarjeta" foto_S="fotos/Hasbulla.jpg" />
+
+
+
+	<Senderista nombreS="Mutombo Kome" dni="70398142F" telefono="681173360" correo="mutomboKomeee@gmail.com"
+		   cuentaBancaria="ES47011502884154465007812" cuantiaAyuda="650" formaPago="Efectivo" foto_S="fotos/Mutombo.jpg" />
+</Senderistas>

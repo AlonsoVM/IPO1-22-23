@@ -6,7 +6,61 @@
         xmlns:local="clr-namespace:Senderismo"
         mc:Ignorable="d"
         Title="InterfazPrincipal" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="Gray">
+        <TabControl x:Name="tabGeneral" Margin="10,15,10,30">
+            <TabItem x:Name="tabSenderistas" Header="Gestión Senderistas">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="lstSenderistas" Margin="0,0,591,0" SelectionChanged="lstSenderistas_SelectionChanged">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="Annadir_Senderias" Header="Añadir Senderista" Click="annadir_senderias_Click" >
+                                    <MenuItem.Icon>
+                                        <Image Source="fotos/correcto.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="Eliminar_Sendrista" Header="Eliminar Senderias" Click="Eliminar_senderista_click" >
+                                    <MenuItem.Icon>
+                                        <Image Source="fotos/incorrecto.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Margin" Value="1"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="Blue"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="BorderBrush" Value="Blue"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+
+                                    </Trigger>
+                                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                        <Setter Property="Background" Value="LightCyan"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="fotoSeleccion"  Width="60" Height="60" Source="{Binding foto}" />
+                                    <TextBlock VerticalAlignment="Center" Margin="20,0,0,0" Text="{Binding nombre}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <GridSplitter HorizontalAlignment="Left" Height="362" Margin="183,0,0,0" VerticalAlignment="Center" Width="15"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabRutas" Header="Gestión Rutas">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="tabGuias" Header="Gestion guias">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>
