@@ -78,5 +78,42 @@ namespace Senderismo
         {
 
         }
+
+        private void btnGuardar_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar.png", UriKind.Relative));
+            imgGuardar.Source = img_drag_ong;
+        }
+
+        private void btnGuardar_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar_bn.png", UriKind.Relative));
+            imgGuardar.Source = img_drag_ong;
+        }
+
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(boxNombre.Text) && !String.IsNullOrEmpty(boxDNI.Text) && !String.IsNullOrEmpty(boxEdad.Text)
+                && !String.IsNullOrEmpty(boxSexo.Text) && !String.IsNullOrEmpty(boxFijo.Text) && !String.IsNullOrEmpty(boxMovil.Text)
+                && !String.IsNullOrEmpty(boxDir.Text))
+            {
+
+            }
+            else {
+                MessageBox.Show("Adevertencia rellene los parametros necesarios");
+            }
+        }
+
+        private void btnSalir_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_c.jpg", UriKind.Relative));
+            imgSalir.Source = img_drag_ong;
+        }
+
+        private void btnSalir_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_bn.png", UriKind.Relative));
+            imgSalir.Source = img_drag_ong;
+        }
     }
 }

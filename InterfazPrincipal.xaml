@@ -6,17 +6,13 @@
         xmlns:local="clr-namespace:Senderismo"
         mc:Ignorable="d"
         Title="InterfazPrincipal" WindowStartupLocation="CenterScreen" Height="473" Width="800">
-    <Grid Background="Gray" Margin="0,0,0,-47">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="231*"/>
-            <ColumnDefinition Width="569*"/>
-        </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabGeneral" Margin="10,15,10,10" Grid.ColumnSpan="2">
+    <Grid Background="Gray" Margin="0,0,0,-107">
+        <TabControl x:Name="tabGeneral" Margin="10,15,10,33">
             <TabItem x:Name="tabSenderistas" Header="Gestión Senderistas">
-                <Grid Background="#FFE5E5E5" Margin="0,0,1,-3.4">
+                <Grid Background="#FFE5E5E5" Margin="0,0,1,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="669*"/>
-                        <ColumnDefinition Width="104*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="lstSenderistas" Margin="0,0,0,10" SelectionChanged="lstSenderistas_SelectionChanged" HorizontalAlignment="Left" Width="193">
                         <ListBox.ContextMenu>
@@ -60,40 +56,46 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <GridSplitter HorizontalAlignment="Left" Margin="193,0,0,-1" Width="11"/>
-                    <StackPanel Orientation="Vertical" Margin="230,0,0,0" Grid.ColumnSpan="2">
-                        <TextBox x:Name="lblNombre" TextWrapping="Wrap"  RenderTransformOrigin="0.483,0.566" TextAlignment="Center" Text="{Binding SelectedItem.nombreS, ElementName=lstSenderistas}" HorizontalAlignment="Center" VerticalContentAlignment="Top"/>
+                    <StackPanel Orientation="Vertical" Margin="209,0,0,62">
+                        <TextBox x:Name="lblNombre" TextWrapping="Wrap"  RenderTransformOrigin="0.483,0.566" TextAlignment="Center" Text="{Binding SelectedItem.nombreS, ElementName=lstSenderistas}" HorizontalAlignment="Center" VerticalContentAlignment="Top" Width="200"/>
                         <Image Height="92" Width="139" HorizontalAlignment="Left" Source="{Binding SelectedItem.foto_S, ElementName=lstSenderistas}"/>
                         <Label Content="Información personal del senderista" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
                         <StackPanel x:Name="stackPersonalInfo" Height="26" Orientation="Horizontal">
                             <Label Content="Apellidos:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                            <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.apellido, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxNombre" TextWrapping="Wrap" Text="{Binding SelectedItem.apellido, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                             <Label Content="DNI:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                            <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.dni, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxDNI" TextWrapping="Wrap" Text="{Binding SelectedItem.dni, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                             <Label Content="Edad:" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                            <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.edad, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox x:Name="boxEdad" TextWrapping="Wrap" Text="{Binding SelectedItem.edad, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                             <Label Content="Sexo:" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                            <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.sexo, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox x:Name="boxSexo" TextWrapping="Wrap" Text="{Binding SelectedItem.sexo, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <Separator Height="20"/>
                         <Label Content="Información de contacto del senderista" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
                         <StackPanel Height="46" Orientation="Horizontal">
                             <Label Content="telefono fijo:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                            <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.telefono, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxFijo" TextWrapping="Wrap" Text="{Binding SelectedItem.telefono, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                             <Label Content="telefono movil::" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                            <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.telefono_m, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxMovil" TextWrapping="Wrap" Text="{Binding SelectedItem.telefono_m, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                             <Label Content="Direción:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                            <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.direccion, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxDir" TextWrapping="Wrap" Text="{Binding SelectedItem.direccion, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </StackPanel>
                         <Separator Height="24"/>
                         <Label Content="Rutas realizadas" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
-                        <StackPanel Height="47" Orientation="Horizontal">
+                        <StackPanel Height="34" Orientation="Horizontal">
                             <Label Content="Nombre de las ruas" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                             <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.participacion, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
-                    <Button x:Name="btnGuardar" HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="Visible" Height="36" Margin="244,0,0,40">
+                    <Button x:Name="btnGuardar" Visibility="Visible" Height="36" MouseEnter="btnGuardar_MouseEnter" MouseLeave="btnGuardar_MouseLeave" Click="btnGuardar_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="209,0,0,80">
                         <StackPanel Height="36" Width="86" Orientation="Horizontal" Grid.Row="3">
-                            <Image Height="25" Width="24" Source="fotos/guardar.png"/>
+                            <Image x:Name="imgGuardar" Height="25" Width="24" Source="fotos/guardar_bn.png"/>
+                            <TextBlock TextWrapping="Wrap" Text="Guardar" Width="49" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnSalir" Visibility="Visible" Height="36" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseEnter="btnSalir_MouseEnter" MouseLeave="btnSalir_MouseLeave" Click="btnGuardar_Click" Margin="0,0,46,80">
+                        <StackPanel Height="36" Width="86" Orientation="Horizontal" Grid.Row="3">
+                            <Image x:Name="imgSalir" Height="25" Width="24" Source="fotos/salir_bn.png"/>
                             <TextBlock TextWrapping="Wrap" Text="Guardar" Width="49" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
