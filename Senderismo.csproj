@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="guia.cs" />
     <Compile Include="Senderistas.cs" />
     <Compile Include="InicioU.xaml.cs">
       <DependentUpon>InicioU.xaml</DependentUpon>
@@ -155,6 +156,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fotos\salir_bn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\editar_bn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\editar_c.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\guias.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\Josep.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

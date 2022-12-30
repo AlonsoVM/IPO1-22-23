@@ -22,21 +22,38 @@ namespace Senderismo
     public partial class InterfazPrincipal : Window
     {
         private List<Senderistas> listaSenderistas;
+        private List<guia> listaGuias;
         public InterfazPrincipal()
         {
             InitializeComponent();
             listaSenderistas = CargarContenidoXML_S();
             lstSenderistas.ItemsSource = listaSenderistas;
+            listaGuias = CargarContenidoXML_G();
+            lstGuias.ItemsSource = listaGuias;
+        }
+
+        private List<guia> CargarContenidoXML_G() {
+            List<guia> aux = new List<guia>();
+            XmlDocument doc = new XmlDocument();
+            var fichero = Application.GetResourceStream(new Uri("data/guias.xml", UriKind.Relative));
+            doc.Load(fichero.Stream);
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes) {
+                var guia_aux = new guia("", null);
+                guia_aux.nombre_G = node.Attributes["nombre_G"].Value;
+                guia_aux.foto_G = new Uri(node.Attributes["foto_G"].Value, UriKind.Relative);
+                aux.Add(guia_aux);
+            }
+            return aux;
         }
 
         private List<Senderistas> CargarContenidoXML_S()
         {
             List<Senderistas> aux = new List<Senderistas>();
-            XmlDocument doc2 = new XmlDocument();
+            XmlDocument doc = new XmlDocument();
             var fichero2 = Application.GetResourceStream(new Uri("data/Senderistas.xml", UriKind.Relative));
-            doc2.Load(fichero2.Stream);
+            doc.Load(fichero2.Stream);
 
-            foreach (XmlNode node in doc2.DocumentElement.ChildNodes)
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 var senderista_aux = new Senderistas("", "", "", "", "", "", "", null, "", "", "", "");
 
@@ -97,7 +114,7 @@ namespace Senderismo
                 && !String.IsNullOrEmpty(boxSexo.Text) && !String.IsNullOrEmpty(boxFijo.Text) && !String.IsNullOrEmpty(boxMovil.Text)
                 && !String.IsNullOrEmpty(boxDir.Text))
             {
-
+                MessageBox.Show("Se guardaron los cambios correctamente");
             }
             else {
                 MessageBox.Show("Adevertencia rellene los parametros necesarios");
@@ -114,6 +131,36 @@ namespace Senderismo
         {
             var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_bn.png", UriKind.Relative));
             imgSalir.Source = img_drag_ong;
+        }
+
+        private void btn_Cambiar_click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog();
+            dialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
+            if (dialog.ShowDialog() == true)
+            {
+                try
+                {
+                    Senderistas sender_aux = listaSenderistas[lstSenderistas.SelectedIndex];
+                    sender_aux.foto_S = new Uri(dialog.FileName, UriKind.Absolute);
+                    lstSenderistas.Items.Refresh();
+                }
+                catch (Exception ex) { 
+                    MessageBox.Show("Error  :"+ex.ToString());
+                }
+            }
+        }
+
+        private void img_cambiar_enter(object sender, MouseEventArgs e)
+        {
+            var img_enter = new BitmapImage(new Uri("/fotos/editar_c.jpg", UriKind.Relative));
+            imgCambiar.Source = img_enter;
+        }
+
+        private void img_cambiar_leave(object sender, MouseEventArgs e)
+        {
+            var img_enter = new BitmapImage(new Uri("/fotos/editar_bn.png", UriKind.Relative));
+            imgCambiar.Source = img_enter;
         }
     }
 }
