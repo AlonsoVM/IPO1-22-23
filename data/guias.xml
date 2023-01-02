@@ -1,3 +1,4 @@
-﻿<Voluntarios>
-	<Voluntario nombre_G="Josep Pedrerol" foto_G="fotos/Josep.jpg"/>
-</Voluntarios>
+﻿<Guias>
+	<Guia nombre_G="Josep" foto_G="fotos/Josep.jpg" apellido="Pedrerol" dni="21789674H" idiomas="Catalan;Español;ingles" rutas="Barranco_del_tuerto;Pico_del_lobo" nota="7,8" email="josep@chiriguitomail.com" direccion="calle sueños N/14" telefono="678666590" edad="35"/>
+	<Guia nombre_G="Macarena" foto_G="fotos/macarena.jpg" apellido="García" dni="01890123E" idiomas="Frances;Español;ingles" rutas="Mingoliva;Cueva Castrola" nota="8,3" email="macarena@gmail.com" direccion="calle delicias N/11" telefono="620980456" edad="27"/>
+</Guias>

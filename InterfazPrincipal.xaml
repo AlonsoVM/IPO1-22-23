@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Senderismo"
         mc:Ignorable="d"
-        Title="InterfazPrincipal" WindowStartupLocation="CenterScreen" Height="473" Width="800">
-    <Grid Background="Gray" Margin="0,0,0,-107">
+        Title="InterfazPrincipal" WindowStartupLocation="CenterScreen" Height="473" Width="800" WindowState="Maximized">
+    <Grid Background="Gray" Margin="0,0,-58,-101">
         <TabControl x:Name="tabGeneral" Margin="10,15,10,33">
             <TabItem x:Name="tabSenderistas" Header="Gestión Senderistas">
                 <Grid Background="#FFE5E5E5" Margin="0,0,1,0">
@@ -57,7 +57,7 @@
                     </ListBox>
                     <GridSplitter HorizontalAlignment="Left" Margin="217,0,0,-1" Width="11"/>
                     <StackPanel Orientation="Vertical" Margin="254,0,0,98">
-                        <TextBox x:Name="lblNombre" TextWrapping="Wrap"  RenderTransformOrigin="0.483,0.566" TextAlignment="Center" Text="{Binding SelectedItem.nombreS, ElementName=lstSenderistas}" HorizontalAlignment="Center" VerticalContentAlignment="Top" Width="200"/>
+                        <TextBox x:Name="lblNombre" TextWrapping="Wrap"  RenderTransformOrigin="0.483,0.566" TextAlignment="Center" Text="{Binding SelectedItem.nombreS, ElementName=lstSenderistas}" HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="200"/>
                         <Image x:Name="imgMine" Height="128" Width="171" HorizontalAlignment="Left" Source="{Binding SelectedItem.foto_S, ElementName=lstSenderistas}"/>
                         <Label Content="Información personal del senderista" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
                         <StackPanel x:Name="stackPersonalInfo" Height="26" Orientation="Horizontal">
@@ -99,7 +99,7 @@
                             <TextBlock TextWrapping="Wrap" Text="Cambiar Imagen" Width="49"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="btnSalir" Visibility="Visible" Height="36" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseEnter="btnSalir_MouseEnter" MouseLeave="btnSalir_MouseLeave" Click="btnGuardar_Click" Margin="0,0,46,80">
+                    <Button x:Name="btnSalir" Visibility="Visible" Height="36" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseEnter="btnSalir_MouseEnter" MouseLeave="btnSalir_MouseLeave" Click="btnSalir_s_click" Margin="0,0,46,80">
                         <StackPanel Height="36" Width="86" Orientation="Horizontal" Grid.Row="3">
                             <Image x:Name="imgSalir" Height="25" Width="24" Source="fotos/salir_bn.png"/>
                             <TextBlock TextWrapping="Wrap" Text="Salir" Width="49" VerticalAlignment="Center"/>
@@ -112,15 +112,15 @@
             </TabItem>
             <TabItem x:Name="tabGuias" Header="Gestion guias">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox x:Name="lstGuias" Margin="0,0,0,10" HorizontalAlignment="Left" Width="193">
+                    <ListBox x:Name="lstGuias" Margin="0,0,0,10" HorizontalAlignment="Left" Width="212">
                         <ListBox.ContextMenu>
                             <ContextMenu>
-                                <MenuItem x:Name="Annadir_guia" Header="Añadir Guia">
+                                <MenuItem x:Name="Annadir_guia_m" Header="Añadir Guia" Click="Annadir_guia">
                                     <MenuItem.Icon>
                                         <Image Source="fotos/correcto.png"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <MenuItem x:Name="Eliminar_guia" Header="Eliminar Guia">
+                                <MenuItem x:Name="Eliminar_guia_m" Header="Eliminar Guia" Click="Eliminar_guia">
                                     <MenuItem.Icon>
                                         <Image Source="fotos/incorrecto.png"/>
                                     </MenuItem.Icon>
@@ -152,6 +152,58 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    <GridSplitter HorizontalAlignment="Left" Margin="217,0,0,-1" Width="11"/>
+                    <StackPanel Orientation="Vertical" Margin="254,0,0,120">
+                        <TextBox x:Name="lblName_G" TextWrapping="Wrap" Text="{Binding SelectedItem.nombre_G, ElementName=lstGuias}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Image x:Name="imgMine_G" Height="128" Width="171" VerticalAlignment="Top" HorizontalAlignment="Left" Source="{Binding SelectedItem.foto_G, ElementName=lstGuias}"/>
+                        <Label Content="Información personal del Guia:" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+                        <StackPanel x:Name="stackpersonal_info_g" Height="26" Orientation="Horizontal">
+                            <Label x:Name="lblapellidos_g" Content="Apellidos:" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox x:Name="boxapellidos_g" TextWrapping="Wrap" Text="{Binding SelectedItem.apellido, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label x:Name="lbldni_g" Content="DNI:" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxdni_g" TextWrapping="Wrap" Text="{Binding SelectedItem.dni, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label x:Name="lbledad_g" Content="Edad:" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxedad_g" TextWrapping="Wrap" Text="{Binding SelectedItem.edad, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <Separator Height="20"/>
+                        <Label Content="Informacion de contacto Guia:" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18"/>
+                        <StackPanel x:Name="stackcontact_info_g" Height="26" Orientation="Horizontal">
+                            <Label x:Name="lbltelefono_g" Content="teléfono:" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox x:Name="boxtelefono_g" TextWrapping="Wrap" Text="{Binding SelectedItem.telefono, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label x:Name="lbldir_g" Content="Dirección:" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxdir_g" TextWrapping="Wrap" Text="{Binding SelectedItem.direccion, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label x:Name="lbltemail_g" Content="email:" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox x:Name="boxemail_g" TextWrapping="Wrap" Text="{Binding SelectedItem.email, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <Separator Height="20"/>
+                        <Label Content="Información del Guia:" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18"/>
+                        <StackPanel Height="28" Orientation="Horizontal">
+                            <Label x:Name="lblrutas_realizadas" Content="Rutas realizadas"/>
+                            <TextBox x:Name="boxrutas_realizadas" TextWrapping="Wrap" Text="{Binding SelectedItem.rutas, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label x:Name="lblnota_media" Content="Nota media:" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxnota_media" TextWrapping="Wrap" Text="{Binding SelectedItem.nota, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label x:Name="lblidiomas" Content="Idiomas:" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="boxidiomas" TextWrapping="Wrap" Text="{Binding SelectedItem.idiomas, ElementName=lstGuias}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button x:Name="btnGuardar_g" Visibility="Visible" Height="36" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="254,0,0,80" MouseEnter="MouseEnter_btnGuardar_g" MouseLeave="MouseLeabe_btnGuardar_g" Click="Click_btnGuardar_g">
+                        <StackPanel Height="36" Width="86" Orientation="Horizontal" Grid.Row="3">
+                            <Image x:Name="imgGuardar_g" Height="25" Width="24" Source="fotos/guardar_bn.png"/>
+                            <TextBlock TextWrapping="Wrap" Text="Guardar" Width="49" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnCambiarImg_g" Visibility="Visible" Height="36" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="423,0,0,80" MouseEnter="MouseEnter_btnCambiarImg_g" MouseLeave="MouseLeave_btnCambiarimg_g" Click="Click_btnCambiarImg_g">
+                        <StackPanel Height="36" Width="86" Orientation="Horizontal" Grid.Row="3">
+                            <Image x:Name="imgCambiar_g" Height="25" Width="24" Source="fotos/editar_bn.png"/>
+                            <TextBlock TextWrapping="Wrap" Text="Cambiar Imagen" Width="49"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnSalir_g" Visibility="Visible" Height="36" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,46,80" Click="Click_btnSalir_g" MouseEnter="btnSalir_g_MouseEnter" MouseLeave="btnSalir_g_MouseLeave">
+                        <StackPanel Height="36" Width="86" Orientation="Horizontal" Grid.Row="3">
+                            <Image x:Name="imgSalir_g" Height="25" Width="24" Source="fotos/salir_bn.png"/>
+                            <TextBlock TextWrapping="Wrap" Text="Salir" Width="49" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
                 </Grid>
             </TabItem>
         </TabControl>
