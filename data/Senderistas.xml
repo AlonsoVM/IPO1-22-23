@@ -1,9 +1,9 @@
 ﻿<Senderistas>
 	<Senderista nombreS="Hasbulla" dni="05365410P" telefono="925467134" telefono_m="612457814" correo="hasbullaMagomedov@gmail.com"
-		   apellidos="Magomedow Miroslaw" rutas_realizadas="3,4" foto_S="fotos/Hasbulla.jpg" edad="25" sexo="indefinido" direccion="Calle Delicias N/3" participacion="Huerta_del_tuerto Mingoliva"/>
+		   apellidos="Magomedow Miroslaw" rutas_realizadas="3,4" foto_S="fotos/Hasbulla.jpg" edad="25" sexo="indefinido" direccion="Calle Delicias N/3" participacion="Huerta_del_tuerto Mingoliva" futura="Pico del moro almanzor"/>
 
 
 
 	<Senderista nombreS="Mutombo" dni="70398142F" telefono="925465678" telefono_m="681173360" correo="mutomboKomeee@gmail.com"
-		   apellidos="Kome Buko" rutas_realizadas="1,2" foto_S="fotos/Mutombo.jpg" edad="34" sexo="Hombre" direccion="Calle Sueños N/15" participacion="Barranco_del_Lobo Cueva_Castrola" />
+		   apellidos="Kome Buko" rutas_realizadas="1,2" foto_S="fotos/Mutombo.jpg" edad="34" sexo="Hombre" direccion="Calle Sueños N/15" participacion="Barranco_del_Lobo Cueva_Castrola" futura="Quebranta Huesos, Pico del moro almanzor"/>
 </Senderistas>

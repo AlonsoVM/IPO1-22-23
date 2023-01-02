@@ -81,10 +81,12 @@
                             <TextBox x:Name="boxDir" TextWrapping="Wrap" Text="{Binding SelectedItem.direccion, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </StackPanel>
                         <Separator Height="24"/>
-                        <Label Content="Rutas realizadas" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="Información de Rutas" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
                         <StackPanel Height="34" Orientation="Horizontal">
-                            <Label Content="Nombre de las ruas" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label Content="Nombre de las rutas realizadas" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                             <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.participacion, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label Content="Nombre de las rutas por realizadas" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox TextWrapping="Wrap" Text="{Binding SelectedItem.participacion_futura, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                     <Button x:Name="btnGuardar" Visibility="Visible" Height="36" MouseEnter="btnGuardar_MouseEnter" MouseLeave="btnGuardar_MouseLeave" Click="btnGuardar_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="254,0,0,80">

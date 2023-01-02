@@ -65,7 +65,7 @@ namespace Senderismo
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var senderista_aux = new Senderistas("", "", "", "", "", "", "", null, "", "", "", "");
+                var senderista_aux = new Senderistas("", "", "", "", "", "", "", null, "", "", "", "", "");
 
                 senderista_aux.nombreS = node.Attributes["nombreS"].Value;
                 senderista_aux.dni = node.Attributes["dni"].Value;
@@ -79,6 +79,7 @@ namespace Senderismo
                 senderista_aux.sexo = node.Attributes["sexo"].Value;
                 senderista_aux.direccion = node.Attributes["direccion"].Value;
                 senderista_aux.participacion = (node.Attributes["participacion"].Value);
+                senderista_aux.participacion_futura = node.Attributes["futura"].Value;
                 aux.Add(senderista_aux);
             }
 
@@ -87,7 +88,7 @@ namespace Senderismo
 
         private void annadir_senderias_Click(object sender, RoutedEventArgs e)
         {
-            Senderistas senderista = new Senderistas("Nuevo Elemento", "", "", "", "", "", "", new Uri("fotos/jose.jpg", UriKind.Relative), "", "", "", "");
+            Senderistas senderista = new Senderistas("Nuevo Elemento", "", "", "", "", "", "", new Uri("fotos/jose.jpg", UriKind.Relative), "", "", "", "", "");
             btnGuardar.Visibility = Visibility.Visible;
             listaSenderistas.Add(senderista);
             lstSenderistas.Items.Refresh();
@@ -114,13 +115,13 @@ namespace Senderismo
         private void btnGuardar_MouseEnter(object sender, MouseEventArgs e)
         {
             var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar.png", UriKind.Relative));
-            imgGuardar_g.Source = img_drag_ong;
+            imgGuardar.Source = img_drag_ong;
         }
 
         private void btnGuardar_MouseLeave(object sender, MouseEventArgs e)
         {
             var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar_bn.png", UriKind.Relative));
-            imgGuardar_g.Source = img_drag_ong;
+            imgGuardar.Source = img_drag_ong;
         }
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
@@ -141,7 +142,6 @@ namespace Senderismo
                     sender_aux.direccion = boxDir.Text;
                     sender_aux.rutas_realizadas = boxrutas_realizadas.Text;
                     lstSenderistas.Items.Refresh();
-                    MessageBox.Show("Se guardaron los cambios correctamente");
                 }
                 catch (Exception ex) {
                     MessageBox.Show("Error :" + ex.ToString());
