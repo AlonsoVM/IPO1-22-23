@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PuntoInteres.cs" />
     <Compile Include="Ruta.cs" />
     <Compile Include="guia.cs" />
     <Compile Include="Senderistas.cs" />
@@ -187,6 +188,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fotos\pizarro.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\puntos_interes.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\mirador_mingoliva.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
