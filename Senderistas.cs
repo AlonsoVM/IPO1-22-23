@@ -26,9 +26,11 @@ namespace Senderismo
 
         public string participacion { set; get; }
 
-        public string participacion_futura { set; get; }
+        public List<Ruta> participacion_futura { set; get; }
 
-        public Senderistas(string nombreS, string dni, string telefono, string telefono_m, string correo, string apellido, string rutas_realizadas, Uri foto_S, string edad, string Sexo, string dir, string participacion, string f)
+        public List<Ruta> rutas_realizadas_l { get; set; }
+
+        public Senderistas(string nombreS, string dni, string telefono, string telefono_m, string correo, string apellido, string rutas_realizadas, Uri foto_S, string edad, string Sexo, string dir, List<Ruta> p, List<Ruta> f)
         {
             this.nombreS = nombreS;
             this.dni = dni;
@@ -43,6 +45,7 @@ namespace Senderismo
             this.direccion = dir;
             this.participacion = participacion;
             this.participacion_futura = f;
+            this.rutas_realizadas_l = p;
         }
     }
 }

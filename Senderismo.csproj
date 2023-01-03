@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Ruta.cs" />
     <Compile Include="guia.cs" />
     <Compile Include="Senderistas.cs" />
     <Compile Include="InicioU.xaml.cs">
@@ -171,6 +172,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fotos\macarena.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\base_ruta.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\rutas.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\mingoliva.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\martin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\pizarro.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

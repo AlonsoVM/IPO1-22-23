@@ -1,0 +1,4 @@
+<Rutas>
+	<Ruta foto="/fotos/mingoliva.jpg" nombre="mingoliva" id="0" provincia="Madridejos" origen="hermita de madridejos" destino="monte mingoliva" hora_salida="10:00" duracion="2:30h" fecha_salida="12/02/2023" dificultad="media"/>
+	<Ruta foto="/fotos/pizarro.jpg" nombre="Los pirzarros" id="1" provincia="Madridejos" origen="hermita de madridejos" destino="monte de los pizarros" hora_salida="10:00" duracion="2:30h" fecha_salida="12/02/2023" dificultad="media"/>
+</Rutas>

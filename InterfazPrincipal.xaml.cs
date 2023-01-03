@@ -23,6 +23,7 @@ namespace Senderismo
     {
         private List<Senderistas> listaSenderistas;
         private List<guia> listaGuias;
+        private List<Ruta> listaRutas;
         public InterfazPrincipal()
         {
             InitializeComponent();
@@ -30,7 +31,12 @@ namespace Senderismo
             lstSenderistas.ItemsSource = listaSenderistas;
             listaGuias = CargarContenidoXML_G();
             lstGuias.ItemsSource = listaGuias;
-            
+            listaRutas = CargarContenidoXML_R();
+            lstRutas.ItemsSource = listaRutas;
+            foreach (Senderistas s_aux in listaSenderistas) {
+                copiarListaS(s_aux);
+            }
+
         }
 
         private List<guia> CargarContenidoXML_G() {
@@ -39,7 +45,7 @@ namespace Senderismo
             var fichero = Application.GetResourceStream(new Uri("data/guias.xml", UriKind.Relative));
             doc.Load(fichero.Stream);
             foreach (XmlNode node in doc.DocumentElement.ChildNodes) {
-                var guia_aux = new guia("", null, "", "", "", "", 0, "", "", "","");
+                var guia_aux = new guia("", null, "", "", "", "", 0, "", "", "", "");
                 guia_aux.nombre_G = node.Attributes["nombre_G"].Value;
                 guia_aux.foto_G = new Uri(node.Attributes["foto_G"].Value, UriKind.Relative);
                 guia_aux.apellido = node.Attributes["apellido"].Value;
@@ -55,6 +61,37 @@ namespace Senderismo
             }
             return aux;
         }
+        private void copiarLista(Ruta r) {
+            foreach (Senderistas s_aux in listaSenderistas) {
+                r.participantes.Add(s_aux);
+            }
+        }
+
+        private List<Ruta> CargarContenidoXML_R() {
+            List<Ruta> aux = new List<Ruta>();
+            XmlDocument doc = new XmlDocument();
+            var fichero2 = Application.GetResourceStream(new Uri("data/rutas.xml", UriKind.Relative));
+            doc.Load(fichero2.Stream);
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes) {
+                var ruta_aux = new Ruta("Nueva ruta", 9999, "", "", "", "", "", "", "", new Uri("fotos/base_ruta.jpg", UriKind.Relative), true);
+                ruta_aux.foto_R = new Uri(node.Attributes["foto"].Value, UriKind.Relative);
+                ruta_aux.nombre = node.Attributes["nombre"].Value;
+                ruta_aux.id = int.Parse(node.Attributes["id"].Value);
+                ruta_aux.provincia = node.Attributes["provincia"].Value;
+                ruta_aux.origen = node.Attributes["origen"].Value;
+                ruta_aux.destino = node.Attributes["destino"].Value;
+                ruta_aux.h_salida = node.Attributes["hora_salida"].Value;
+                ruta_aux.duracion = node.Attributes["duracion"].Value;
+                ruta_aux.fecha_salida = node.Attributes["fecha_salida"].Value;
+                ruta_aux.dificultad = node.Attributes["dificultad"].Value;
+                ruta_aux.participantes = new List<Senderistas>();
+                copiarLista(ruta_aux);
+                ruta_aux.guia_r = listaGuias[0];
+                aux.Add(ruta_aux);
+            }
+            return aux;
+
+        }
 
         private List<Senderistas> CargarContenidoXML_S()
         {
@@ -65,7 +102,7 @@ namespace Senderismo
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var senderista_aux = new Senderistas("", "", "", "", "", "", "", null, "", "", "", "", "");
+                var senderista_aux = new Senderistas("", "", "", "", "", "", "", null, "", "", "", null, null);
 
                 senderista_aux.nombreS = node.Attributes["nombreS"].Value;
                 senderista_aux.dni = node.Attributes["dni"].Value;
@@ -78,17 +115,22 @@ namespace Senderismo
                 senderista_aux.edad = node.Attributes["edad"].Value;
                 senderista_aux.sexo = node.Attributes["sexo"].Value;
                 senderista_aux.direccion = node.Attributes["direccion"].Value;
-                senderista_aux.participacion = (node.Attributes["participacion"].Value);
-                senderista_aux.participacion_futura = node.Attributes["futura"].Value;
+                senderista_aux.rutas_realizadas_l = new List<Ruta>();
+                senderista_aux.participacion_futura = new List<Ruta>();
                 aux.Add(senderista_aux);
             }
 
             return aux;
         }
+        private void copiarListaS(Senderistas s_aux) {
+            foreach (Ruta r_aux in listaRutas) {
+                s_aux.rutas_realizadas_l.Add(r_aux);            
+            }
+        }
 
         private void annadir_senderias_Click(object sender, RoutedEventArgs e)
         {
-            Senderistas senderista = new Senderistas("Nuevo Elemento", "", "", "", "", "", "", new Uri("fotos/jose.jpg", UriKind.Relative), "", "", "", "", "");
+            Senderistas senderista = new Senderistas("Nuevo Elemento", "", "", "", "", "", "", new Uri("fotos/jose.jpg", UriKind.Relative), "", "", "", new List<Ruta>(), new List<Ruta>());
             btnGuardar.Visibility = Visibility.Visible;
             listaSenderistas.Add(senderista);
             lstSenderistas.Items.Refresh();
@@ -109,7 +151,17 @@ namespace Senderismo
 
         private void lstSenderistas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            try
+            {
+                lstRutasY.ItemsSource = listaSenderistas[lstSenderistas.SelectedIndex].rutas_realizadas_l;
+                lstRutasN.ItemsSource = listaSenderistas[lstSenderistas.SelectedIndex].participacion_futura;
+                lstRutasN.Items.Refresh();
+                lstRutasY.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Seleccione un elemento de la lista de senderitas; error: " + ex.ToString());
+            }
         }
 
         private void btnGuardar_MouseEnter(object sender, MouseEventArgs e)
@@ -311,6 +363,101 @@ namespace Senderismo
         {
             MessageBox.Show("Gracias por utilizar la aplicación");
             Application.Current.Shutdown();
+        }
+
+        private void Annadir_ruta_Click(object sender, RoutedEventArgs e)
+        {
+            Ruta ruta_aux = new Ruta("Nueva ruta", 9999, "", "", "", "", "", "", "", new Uri("fotos/base_ruta.jpg", UriKind.Relative), false);
+            ruta_aux.participantes = new List<Senderistas>();
+            listaRutas.Add(ruta_aux);
+            lstRutas.Items.Refresh();
+            MessageBox.Show("Ya se pude introducir información de la nueva ruta");
+        }
+
+        private void lstRutas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                lstParticipantes.ItemsSource = listaRutas[lstRutas.SelectedIndex].participantes;
+                List<guia> g_aux = new List<guia>();
+                g_aux.Add(listaRutas[lstRutas.SelectedIndex].guia_r);
+                lstGuiasRuta.ItemsSource = g_aux;
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Debe selecionar una ruta de la lista; error: " + ex.ToString());
+            }
+        }
+
+        private void Annadir_Participante_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(boxNuevoP.Text)) {
+                Senderistas sender_aux = buscarPorNombre(boxNuevoP.Text);
+                if (sender_aux != null)
+                {
+                    listaRutas[lstRutas.SelectedIndex].participantes.Add(sender_aux);
+                    lstParticipantes.Items.Refresh();
+                    añadir_ruta_a_participante(sender_aux);
+                }
+                else {
+                    MessageBox.Show("No se encontró");
+                }
+            }
+        }
+
+        private void añadir_ruta_a_participante(Senderistas s) {
+            MessageBox.Show(listaRutas[lstRutas.SelectedIndex].realizada.ToString());
+            if (listaRutas[lstRutas.SelectedIndex].realizada)
+            {
+                s.rutas_realizadas_l.Add(listaRutas[lstRutas.SelectedIndex]);
+            }
+            else {
+                s.participacion_futura.Add(listaRutas[lstRutas.SelectedIndex]);
+            }
+        }
+
+        private Senderistas buscarPorNombre(string n) {
+            foreach (Senderistas s_aux in listaSenderistas) {
+                if (s_aux.nombreS.Equals(n)) {
+                    return s_aux;
+                }
+            }
+            return null;
+
+        }
+
+        private guia bucasPorNombre_G(string n) { 
+            foreach (guia g_aux in listaGuias)
+            {
+                if (g_aux.nombre_G.Equals(n)) { 
+                    return g_aux;
+                }
+            }
+            return null;
+        }
+
+        private void Eliminar_Participante_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                listaRutas[lstRutas.SelectedIndex].participantes.RemoveAt(lstParticipantes.SelectedIndex);
+                lstParticipantes.Items.Refresh();
+                MessageBox.Show("Se elimino al participante");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error de indice :" + ex.ToString());
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            guia g_aux = bucasPorNombre_G(boxGuiaRuta.Text);
+            if (g_aux != null)
+            {
+                listaRutas[lstRutas.SelectedIndex].guia_r = g_aux;
+                lstRutas.Items.Refresh();
+                MessageBox.Show("Se cambio el guia");
+            }
         }
     }
 }

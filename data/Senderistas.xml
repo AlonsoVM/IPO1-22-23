@@ -6,4 +6,7 @@
 
 	<Senderista nombreS="Mutombo" dni="70398142F" telefono="925465678" telefono_m="681173360" correo="mutomboKomeee@gmail.com"
 		   apellidos="Kome Buko" rutas_realizadas="1,2" foto_S="fotos/Mutombo.jpg" edad="34" sexo="Hombre" direccion="Calle Sueños N/15" participacion="Barranco_del_Lobo Cueva_Castrola" futura="Quebranta Huesos, Pico del moro almanzor"/>
+
+	<Senderista nombreS="Martin" dni="41398142F" telefono="925465678" telefono_m="681173360" correo="martin@gmail.com"
+	   apellidos="Luther King" rutas_realizadas="1,2" foto_S="fotos/martin.jpg" edad="34" sexo="Hombre" direccion="Calle Sueños N/15" participacion="Barranco_del_Lobo Cueva_Castrola" futura="Quebranta Huesos, Pico del moro almanzor"/>
 </Senderistas>
