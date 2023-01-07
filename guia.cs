@@ -19,7 +19,9 @@ namespace Senderismo
 
         public string idiomas { get; set; }
 
-        public string rutas { get; set; }
+        public List<Ruta> rutas_ya_realizada { get; set; }
+
+        public List<Ruta> rutas_no_realizadad { get; set; }
 
         public float nota { get; set; }
 
@@ -29,14 +31,15 @@ namespace Senderismo
 
         public string telefono { get; set; }
 
-        public guia(string n, Uri f, string apellido, string dni, string idioma, string rutas, float nota, string email, string direccion, string telefono, string edad)
+        public guia(string n, Uri f, string apellido, string dni, string idioma, List<Ruta> rutas, List<Ruta> rutas2, float nota, string email, string direccion, string telefono, string edad)
         {
             this.nombre_G = n;
             this.foto_G = f;
             this.apellido = apellido;
             this.dni = dni;
             this.idiomas = idioma;
-            this.rutas = rutas;
+            this.rutas_ya_realizada = rutas;
+            this.rutas_no_realizadad = rutas2;
             this.nota = nota;
             this.email = email;
             this.direccion = direccion;

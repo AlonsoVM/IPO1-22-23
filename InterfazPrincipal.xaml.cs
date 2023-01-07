@@ -43,6 +43,7 @@ namespace Senderismo
             {
                 añadir_puntos_de_interes_a_ruta(p_aux);
             }
+            copiarRutasG();
         }
 
         private void añadir_puntos_de_interes_a_ruta(PuntoInteres p_aux)
@@ -81,13 +82,12 @@ namespace Senderismo
             doc.Load(fichero.Stream);
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var guia_aux = new guia("", null, "", "", "", "", 0, "", "", "", "");
+                var guia_aux = new guia("", null, "", "", "", new List<Ruta>(), new List<Ruta>(), 0, "", "", "", "");
                 guia_aux.nombre_G = node.Attributes["nombre_G"].Value;
                 guia_aux.foto_G = new Uri(node.Attributes["foto_G"].Value, UriKind.Relative);
                 guia_aux.apellido = node.Attributes["apellido"].Value;
                 guia_aux.dni = node.Attributes["dni"].Value;
                 guia_aux.idiomas = node.Attributes["idiomas"].Value;
-                guia_aux.rutas = node.Attributes["rutas"].Value;
                 guia_aux.nota = float.Parse(node.Attributes["nota"].Value);
                 guia_aux.email = node.Attributes["email"].Value;
                 guia_aux.direccion = node.Attributes["direccion"].Value;
@@ -126,12 +126,18 @@ namespace Senderismo
                 ruta_aux.dificultad = node.Attributes["dificultad"].Value;
                 ruta_aux.puntos = new List<PuntoInteres>();
                 ruta_aux.participantes = new List<Senderistas>();
-                copiarLista(ruta_aux);
                 ruta_aux.guia_r = listaGuias[0];
+                copiarLista(ruta_aux);
                 aux.Add(ruta_aux);
             }
             return aux;
 
+        }
+
+        private void copiarRutasG() {
+            foreach (Ruta r_aux in listaRutas) {
+                listaGuias[0].rutas_ya_realizada.Add(r_aux);
+            }
         }
 
         private List<Senderistas> CargarContenidoXML_S()
@@ -213,12 +219,14 @@ namespace Senderismo
         {
             var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar.png", UriKind.Relative));
             imgGuardar.Source = img_drag_ong;
+            imgGuardar_R.Source = img_drag_ong;
         }
 
         private void btnGuardar_MouseLeave(object sender, MouseEventArgs e)
         {
             var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar_bn.png", UriKind.Relative));
             imgGuardar.Source = img_drag_ong;
+            imgGuardar_R.Source = img_drag_ong;
         }
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
@@ -237,7 +245,6 @@ namespace Senderismo
                     sender_aux.telefono = boxFijo.Text;
                     sender_aux.telefono_m = boxMovil.Text;
                     sender_aux.direccion = boxDir.Text;
-                    sender_aux.rutas_realizadas = boxrutas_realizadas.Text;
                     lstSenderistas.Items.Refresh();
                 }
                 catch (Exception ex)
@@ -287,12 +294,14 @@ namespace Senderismo
         {
             var img_enter = new BitmapImage(new Uri("/fotos/editar_c.jpg", UriKind.Relative));
             imgCambiar.Source = img_enter;
+            btnEditar_Ru.Source = img_enter;
         }
 
         private void img_cambiar_leave(object sender, MouseEventArgs e)
         {
             var img_enter = new BitmapImage(new Uri("/fotos/editar_bn.png", UriKind.Relative));
             imgCambiar.Source = img_enter;
+            btnEditar_Ru.Source = img_enter;
         }
 
         private void MouseEnter_btnGuardar_g(object sender, MouseEventArgs e)
@@ -310,7 +319,7 @@ namespace Senderismo
         private void Click_btnGuardar_g(object sender, RoutedEventArgs e)
         {
             if (!String.IsNullOrEmpty(boxapellidos_g.Text) && !String.IsNullOrEmpty(boxdni_g.Text) && !String.IsNullOrEmpty(boxedad_g.Text) && !String.IsNullOrEmpty(boxtelefono_g.Text) && !String.IsNullOrEmpty(boxdir_g.Text)
-                && !String.IsNullOrEmpty(boxemail_g.Text) && !String.IsNullOrEmpty(boxrutas_realizadas.Text) && !String.IsNullOrEmpty(boxnota_media.Text) && !String.IsNullOrEmpty(boxidiomas.Text) && !String.IsNullOrEmpty(lblName_G.Text))
+                && !String.IsNullOrEmpty(boxemail_g.Text) && !String.IsNullOrEmpty(boxnota_media.Text) && !String.IsNullOrEmpty(boxidiomas.Text) && !String.IsNullOrEmpty(lblName_G.Text))
             {
                 try
                 {
@@ -322,7 +331,6 @@ namespace Senderismo
                     guia_aux.telefono = boxtelefono_g.Text;
                     guia_aux.direccion = boxdir_g.Text;
                     guia_aux.email = boxemail_g.Text;
-                    guia_aux.rutas = boxrutas_realizadas.Text;
                     guia_aux.idiomas = boxidiomas.Text;
                     guia_aux.nota = float.Parse(boxnota_media.Text);
                     lstGuias.Items.Refresh();
@@ -379,17 +387,19 @@ namespace Senderismo
         {
             var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_c.jpg", UriKind.Relative));
             imgSalir_g.Source = img_drag_ong;
+            img_salir_G.Source = img_drag_ong;
         }
 
         private void btnSalir_g_MouseLeave(object sender, MouseEventArgs e)
         {
             var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_bn.jpg", UriKind.Relative));
             imgSalir_g.Source = img_drag_ong;
+            img_salir_G.Source = img_drag_ong;
         }
 
         private void Annadir_guia(object sender, RoutedEventArgs e)
         {
-            guia guia_aux = new guia("Nuevo Elemento", new Uri("fotos/jose.jpg", UriKind.Relative), "", "", "", "", 0, "", "", "", "");
+            guia guia_aux = new guia("Nuevo Elemento", new Uri("fotos/jose.jpg", UriKind.Relative), "", "","", new List<Ruta>(), new List<Ruta>(), 0, "", "", "", "");
             listaGuias.Add(guia_aux);
             lstGuias.Items.Refresh();
             MessageBox.Show("Ya se pude introducir información del nuevo senderitsta");
@@ -419,6 +429,7 @@ namespace Senderismo
         {
             Ruta ruta_aux = new Ruta("Nueva ruta", 9999, "", "", "", "", "", "", "", new Uri("fotos/base_ruta.jpg", UriKind.Relative), false, new List<PuntoInteres>());
             ruta_aux.participantes = new List<Senderistas>();
+
             listaRutas.Add(ruta_aux);
             lstRutas.Items.Refresh();
             MessageBox.Show("Ya se pude introducir información de la nueva ruta");
@@ -456,6 +467,9 @@ namespace Senderismo
                 {
                     MessageBox.Show("No se encontró");
                 }
+            }
+            else {
+                MessageBox.Show("por favor indique el nombre del senderista que desea añadir");
             }
         }
 
@@ -525,6 +539,8 @@ namespace Senderismo
             return null;
         }
 
+
+
         private void Eliminar_Participante_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -546,11 +562,46 @@ namespace Senderismo
             guia g_aux = bucasPorNombre_G(boxGuiaRuta.Text);
             if (g_aux != null)
             {
+                eliminar_guia_anterior(listaRutas[lstRutas.SelectedIndex].guia_r, listaRutas[lstRutas.SelectedIndex]);
                 listaRutas[lstRutas.SelectedIndex].guia_r = g_aux;
+                if (listaRutas[lstRutas.SelectedIndex].realizada)
+                {
+                    g_aux.rutas_ya_realizada.Add(listaRutas[lstRutas.SelectedIndex]);
+                }
+                else
+                {
+                    g_aux.rutas_no_realizadad.Add(listaRutas[lstRutas.SelectedIndex]);
+                }
                 lstRutas.Items.Refresh();
                 lstGuiasRuta.Items.Refresh();
                 MessageBox.Show("Se cambio el guia");
                 boxGuiaRuta.Text = "";
+            }
+            else {
+                MessageBox.Show("Por favor indique el nombre de un guia existente");
+            }
+        }
+
+        private void eliminar_guia_anterior(guia g, Ruta r) {
+            int i = 0;
+            if (g != null)
+            {
+                foreach (Ruta r_aux in g.rutas_ya_realizada)
+                {
+                    if (r_aux.nombre.Equals(r.nombre))
+                    {
+                        g.rutas_ya_realizada.RemoveAt(i);
+                        break;
+                    }
+                }
+                foreach (Ruta r_aux in g.rutas_no_realizadad)
+                {
+                    if (r_aux.nombre.Equals(r.nombre))
+                    {
+                        g.rutas_ya_realizada.RemoveAt(i);
+                        break;
+                    }
+                }
             }
         }
 
@@ -600,6 +651,70 @@ namespace Senderismo
             catch (Exception ex) {
                 MessageBox.Show("Selecciones una ruta de la lista; error:" + ex.ToString());
             }
+        }
+
+        private void lstGuias_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                lstRutasYG.ItemsSource = listaGuias[lstGuias.SelectedIndex].rutas_ya_realizada;
+                lstRutasNG.ItemsSource = listaGuias[lstGuias.SelectedIndex].rutas_no_realizadad;
+                lstRutasYG.Items.Refresh();
+                lstRutasNG.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Porfavor selecione un guia de la lista; erro" + ex.ToString());
+            }
+
+        }
+
+        private void btnEditar_R_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog();
+            dialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
+            if (dialog.ShowDialog() == true)
+            {
+                try
+                {
+                    Ruta ruta_aux = listaRutas[lstRutas.SelectedIndex];
+                    ruta_aux.foto_R = new Uri(dialog.FileName, UriKind.Absolute);
+                    lstRutas.Items.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error  :" + ex.ToString());
+                }
+            }
+        }
+
+        private void btnGuardar_R_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                if (String.IsNullOrEmpty(boxProvincia.Text) || String.IsNullOrEmpty(boxOrigen.Text) || String.IsNullOrEmpty(boxDestino.Text)
+                    || String.IsNullOrEmpty(boxDificultad.Text) || String.IsNullOrEmpty(h_salida.Text) || String.IsNullOrEmpty(f_salida.Text) || String.IsNullOrEmpty(boxDuracion.Text))
+                {
+                    MessageBox.Show("Porfavor rellene los parametros necesarios");
+                }
+                if (listaRutas[lstRutas.SelectedIndex].participantes.Count() < 4)
+                {
+                    MessageBox.Show("para crear una ruta se necesitan mas de 4 participantes");
+                }
+                if (listaRutas[lstRutas.SelectedIndex].participantes.Count() > 20)
+                {
+                    MessageBox.Show("En una ruta como maximo pueden ir 20 participantes");
+                }
+                if (listaRutas[lstRutas.SelectedIndex].guia_r is null)
+                {
+                    MessageBox.Show("Para crear una ruta es necesario que se le asigne un guia");
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Por favor seleccione la ruta de la lista que desea guardar; erro: "+ex.ToString());
+            }
+            MessageBox.Show("Se guardo la ruta correctamente");
         }
     }
 }
