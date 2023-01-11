@@ -141,7 +141,7 @@
                                         <Image Source="fotos/correcto.png"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <MenuItem x:Name="Eliminar_ruta" Header="Eliminar ruta">
+                                <MenuItem x:Name="Eliminar_ruta" Header="Eliminar ruta" Click="Eliminar_ruta_click">
                                     <MenuItem.Icon>
                                         <Image Source="fotos/incorrecto.png"/>
                                     </MenuItem.Icon>

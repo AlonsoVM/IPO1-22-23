@@ -202,17 +202,11 @@ namespace Senderismo
 
         private void lstSenderistas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
-            {
+
                 lstRutasY.ItemsSource = listaSenderistas[lstSenderistas.SelectedIndex].rutas_realizadas_l;
                 lstRutasN.ItemsSource = listaSenderistas[lstSenderistas.SelectedIndex].participacion_futura;
                 lstRutasN.Items.Refresh();
                 lstRutasY.Items.Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Seleccione un elemento de la lista de senderitas; error: " + ex.ToString());
-            }
         }
 
         private void btnGuardar_MouseEnter(object sender, MouseEventArgs e)
@@ -447,7 +441,7 @@ namespace Senderismo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Debe selecionar una ruta de la lista; error: " + ex.ToString());
+                
             }
         }
 
@@ -714,7 +708,23 @@ namespace Senderismo
             catch (Exception ex) {
                 MessageBox.Show("Por favor seleccione la ruta de la lista que desea guardar; erro: "+ex.ToString());
             }
-            MessageBox.Show("Se guardo la ruta correctamente");
+            if (listaRutas[lstRutas.SelectedIndex].participantes.Count() > 4 && listaRutas[lstRutas.SelectedIndex].guia_r != null) {
+                MessageBox.Show("Se guardo la ruta correctamente");
+            }
+        }
+
+        private void Eliminar_ruta_click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                listaRutas.RemoveAt(lstRutas.SelectedIndex);
+                lstRutas.Items.Refresh();
+                MessageBox.Show("Se elimino la ruta correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("por favor seleccione una ruta de la lista para eliminar");
+            }
         }
     }
 }

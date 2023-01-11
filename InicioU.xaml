@@ -49,8 +49,9 @@
         <Label x:Name="lblcorreo" Content="Correo:" Foreground="White" HorizontalAlignment="Left" Margin="105,87,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="52" Grid.Column="2"/>
         <Label x:Name="lblDirecion" Content="Direción:" Foreground="White" Margin="106,117,226,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="2" Grid.ColumnSpan="2"/>
         <Label x:Name="lblMun" Content="Municipio:" Foreground="White" HorizontalAlignment="Left" Margin="105,146,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="67" Grid.Column="2"/>
-        <Label x:Name="txtTelefono" Foreground="White" Content="{Binding telefono}" HorizontalAlignment="Left" Margin="63,53,0,0" Grid.Row="1" VerticalAlignment="Top" Width="137" Grid.Column="3"/>
-        <Label x:Name="txtDir" Content="{Binding dir}" Foreground="White"  HorizontalAlignment="Left" Margin="63,118,0,0" Grid.Row="1" VerticalAlignment="Top" Width="121" Grid.Column="3"/>
-        <Label x:Name="txtMuni" Content="{Binding muni}" Foreground="White" HorizontalAlignment="Left" Margin="63,154,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134" Grid.Column="3"/>
+        <Label x:Name="txtTelefono" Foreground="White" Content="{Binding telefono}" HorizontalAlignment="Left" Margin="92,61,0,0" Grid.Row="1" VerticalAlignment="Top" Width="137" Grid.Column="3"/>
+        <Label x:Name="txtDir" Content="{Binding dir}" Foreground="White"  HorizontalAlignment="Left" Margin="81,120,0,0" Grid.Row="1" VerticalAlignment="Top" Width="121" Grid.Column="3"/>
+        <Label x:Name="txtMuni" Content="{Binding muni}" Foreground="White" HorizontalAlignment="Left" Margin="89,146,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134" Grid.Column="3"/>
+        <Label x:Name="txtCorreo" Content="{Binding correo}" Foreground="White" HorizontalAlignment="Left" Margin="92,88,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134" Grid.Column="3"/>
     </Grid>
 </Window>
