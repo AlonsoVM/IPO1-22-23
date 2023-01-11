@@ -1,12 +1,19 @@
 ﻿<Senderistas>
-	<Senderista nombreS="Hasbulla" dni="05365410P" telefono="925467134" telefono_m="612457814" correo="hasbullaMagomedov@gmail.com"
-		   apellidos="Magomedow Miroslaw" rutas_realizadas="3,4" foto_S="fotos/Hasbulla.jpg" edad="25" sexo="indefinido" direccion="Calle Delicias N/3" participacion="Huerta_del_tuerto Mingoliva" futura="Pico del moro almanzor"/>
+	<Senderista nombreS="Tompshon" dni="05365410P" telefono="925467134" telefono_m="612457814" correo="Tomphshon@gmail.com"
+		   apellidos="Magomedow Miroslaw" rutas_realizadas="3,4" foto_S="fotos/tompshon.jpg" edad="25" sexo="indefinido" direccion="Calle Delicias N/3" participacion="Huerta_del_tuerto Mingoliva" futura="Pico del moro almanzor"/>
 
 
 
-	<Senderista nombreS="Mutombo" dni="70398142F" telefono="925465678" telefono_m="681173360" correo="mutomboKomeee@gmail.com"
-		   apellidos="Kome Buko" rutas_realizadas="1,2" foto_S="fotos/Mutombo.jpg" edad="34" sexo="Hombre" direccion="Calle Sueños N/15" participacion="Barranco_del_Lobo Cueva_Castrola" futura="Quebranta Huesos, Pico del moro almanzor"/>
+	<Senderista nombreS="Mutombo" dni="70398142F" telefono="925465678" telefono_m="681173461" correo="mutomboKomeee@gmail.com"
+		   apellidos="Kome Buko" rutas_realizadas="1,2" foto_S="fotos/mutombo.jpg" edad="30" sexo="Hombre" direccion="Calle Sueños N/21" participacion="Barranco_del_Lobo Cueva_Castrola" futura="Quebranta Huesos, Pico del moro almanzor"/>
 
-	<Senderista nombreS="Martin" dni="41398142F" telefono="925465678" telefono_m="681173360" correo="martin@gmail.com"
+	<Senderista nombreS="Martin" dni="41398142F" telefono="925465999" telefono_m="681173666" correo="martin@gmail.com"
 	   apellidos="Luther King" rutas_realizadas="1,2" foto_S="fotos/martin.jpg" edad="34" sexo="Hombre" direccion="Calle Sueños N/15" participacion="Barranco_del_Lobo Cueva_Castrola" futura="Quebranta Huesos, Pico del moro almanzor"/>
+
+	<Senderista nombreS="Alexa" dni="345678232E" telefono="925465789" telefono_m="681173582" correo="a_putellas@gmail.com"
+	   apellidos="Putellas" rutas_realizadas="1,2" foto_S="fotos/putellas.jpg" edad="26" sexo="Mujer" direccion="Calle regidor N/3" participacion="" futura=""/>
+
+
+	<Senderista nombreS="Nano" dni="21987256E" telefono="925465345" telefono_m="681173693" correo="enigma@gmail.com"
+	   apellidos="Mesa" rutas_realizadas="1,2" foto_S="fotos/mesa.jpg" edad="34" sexo="Hombre" direccion="Calle aventuras N/31" participacion="" futura=""/>
 </Senderistas>

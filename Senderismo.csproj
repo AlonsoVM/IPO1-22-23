@@ -136,16 +136,10 @@
     <Resource Include="fotos\catarata.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fotos\Jose.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="data\Senderistas.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fotos\Hasbulla.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="fotos\Mutombo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fotos\guardar.png" />
@@ -193,7 +187,34 @@
     <Resource Include="data\puntos_interes.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fotos\mirador_mingoliva.jpg" />
+    <Resource Include="fotos\mirador_pizarros.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\jose.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\mutombo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\tompshon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\putellas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\mesa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\mirador_mingoliva2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\consuegra.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\molinos_consuegra.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\castillo_consuegra.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

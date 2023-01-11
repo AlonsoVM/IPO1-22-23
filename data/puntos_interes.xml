@@ -1,4 +1,7 @@
 <Puntos>
-	<Punto foto="/fotos/mirador_mingoliva.jpg" tipo="Mirador" id_ruta="0"/>
+	<Punto foto="/fotos/mirador_mingoliva2.jpg" tipo="Mirador" id_ruta="0"/>
 	<Punto foto="/fotos/mirador_pizarros.jpg" tipo="Mirador" id_ruta="1"/>
+	<Punto foto="/fotos/molinos_consuegra.jpg" tipo="Molino" id_ruta="2"/>
+	<Punto foto="/fotos/castillo_consuegra.jpg" tipo="Castillo" id_ruta="2"/>
+	
 </Puntos>

@@ -1,6 +1,6 @@
 ﻿<Usuarios>
 
 	<Usuario usuario="admin" password="1234" nombre="Janchu" apellidos="Villamayor Moreno" dni ="21720256E" telefono="622856415"
-			 correo="villamayormoreno@gmail.com" edad="21" foto="fotos/Jose.jpg" muni="Madridejos" dir="C/Santa Margarita N 15"/>
+			 correo="villamayormoreno@gmail.com" edad="21" foto="fotos/jose.jpg" muni="Madridejos" dir="C/Santa Margarita N 15"/>
 	
 </Usuarios>
