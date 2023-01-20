@@ -196,7 +196,7 @@ namespace Senderismo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("error de indice :" + ex.ToString());
+                MessageBox.Show("Se elimino al senderista");
             }
         }
 
@@ -409,7 +409,7 @@ namespace Senderismo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error de indice :" + ex.ToString());
+                MessageBox.Show("Se elimino el guia");
             }
         }
 
@@ -649,17 +649,10 @@ namespace Senderismo
 
         private void lstGuias_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
-            {
                 lstRutasYG.ItemsSource = listaGuias[lstGuias.SelectedIndex].rutas_ya_realizada;
                 lstRutasNG.ItemsSource = listaGuias[lstGuias.SelectedIndex].rutas_no_realizadad;
                 lstRutasYG.Items.Refresh();
                 lstRutasNG.Items.Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Porfavor selecione un guia de la lista; erro" + ex.ToString());
-            }
 
         }
 
