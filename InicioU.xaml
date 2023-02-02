@@ -27,7 +27,7 @@
         </Rectangle>
         <Rectangle x:Name="VentanaP" Stroke="Black" Fill="#FF363A42" Margin="10,52,6,10" RadiusX="20" RadiusY="20" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="1"/>
         <Button x:Name="btnMenu" Content="Menú" Margin="137,0,0,0" Background="#FFFF5852" FontWeight="Bold" Click="btnMenu_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Height="27" MaxHeight="27" MaxWidth="75" Grid.Row="2" Grid.Column="1"/>
-        <Button x:Name="btnSalir" Content="Salir" Margin="10,0,0,0" Background="#FFFF5852" FontWeight="Bold" Click="btnSalir_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Height="27" MaxHeight="27" MaxWidth="75" Grid.Row="2" Grid.Column="3"/>
+        <Button x:Name="btnSalir" Content="Salir" Margin="101,0,0,0" Background="#FFFF5852" FontWeight="Bold" Click="btnSalir_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Height="27" MaxHeight="27" MaxWidth="75" Grid.Row="2" Grid.Column="3"/>
         <Image x:Name="imgUsuario" HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding foto}" Margin="21,64,0,0" MaxWidth="300" MaxHeight="270" Height="63" Width="133" Grid.Column="2" Grid.ColumnSpan="2"/>
         <Label x:Name="lblAcc" Content="Ultimo Acceso" Foreground="White" FontSize="17" HorizontalAlignment="Left" Margin="79,57,0,0" VerticalAlignment="Top" Grid.Column="3" Height="32" Width="118"/>
         <Label x:Name="infAcc" Foreground="White" Content="{Binding ultimo}" HorizontalAlignment="Left" Margin="81,94,0,0" VerticalAlignment="Top" Height="26" Width="156" Grid.Column="3"/>

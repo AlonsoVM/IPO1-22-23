@@ -23,6 +23,7 @@ namespace Senderismo
     {
         private List<Senderistas> listaSenderistas;
         private List<guia> listaGuias;
+        private Boolean borrado = false;
         private List<Ruta> listaRutas;
         private List<PuntoInteres> listaPuntoInteres;
         public InterfazPrincipal()
@@ -183,6 +184,7 @@ namespace Senderismo
             btnGuardar.Visibility = Visibility.Visible;
             listaSenderistas.Add(senderista);
             lstSenderistas.Items.Refresh();
+            lstSenderistas.SelectedItem = senderista;
             MessageBox.Show("Ya se pude introducir información del nuevo senderitsta");
         }
 
@@ -191,22 +193,24 @@ namespace Senderismo
             try
             {
                 listaSenderistas.RemoveAt(lstSenderistas.SelectedIndex);
+                lstSenderistas.SelectedItem = listaSenderistas[0];
                 lstSenderistas.Items.Refresh();
                 MessageBox.Show("se elimino al senderista");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Se elimino al senderista");
+                MessageBox.Show("Por favor selecciones un Senderista de la lista");
             }
         }
 
         private void lstSenderistas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
                 lstRutasY.ItemsSource = listaSenderistas[lstSenderistas.SelectedIndex].rutas_realizadas_l;
                 lstRutasN.ItemsSource = listaSenderistas[lstSenderistas.SelectedIndex].participacion_futura;
                 lstRutasN.Items.Refresh();
                 lstRutasY.Items.Refresh();
+                btnCambiarImg.Visibility = Visibility.Visible;
+                imgMine.Source = new BitmapImage(listaSenderistas[lstSenderistas.SelectedIndex].foto_S);
         }
 
         private void btnGuardar_MouseEnter(object sender, MouseEventArgs e)
@@ -276,6 +280,7 @@ namespace Senderismo
                     Senderistas sender_aux = listaSenderistas[lstSenderistas.SelectedIndex];
                     sender_aux.foto_S = new Uri(dialog.FileName, UriKind.Absolute);
                     lstSenderistas.Items.Refresh();
+                    imgMine.Source = new BitmapImage(new Uri(dialog.FileName, UriKind.Absolute));
                 }
                 catch (Exception ex)
                 {
@@ -426,6 +431,7 @@ namespace Senderismo
 
             listaRutas.Add(ruta_aux);
             lstRutas.Items.Refresh();
+            lstRutas.SelectedItem = ruta_aux;
             MessageBox.Show("Ya se pude introducir información de la nueva ruta");
         }
 
@@ -718,6 +724,14 @@ namespace Senderismo
             {
                 MessageBox.Show("por favor seleccione una ruta de la lista para eliminar");
             }
+        }
+
+        private void InfoListaClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayuda a usuarios:\n Para añadir un nuevo Senderista, realizar los siguientes pasos:" +
+                "\n\t 1- Click derecho sobre la lista \n\t 2 - Click izquierdo en añadir senderista\n " +
+                "Para Eliminar un senderista realizar los sigueintes pasos:" +
+                "\n\t 1- Click derecho sobre el senderista que se desea eliminar \n\t 2- Click izquierdo en eliminar senderista");
         }
     }
 }
