@@ -205,6 +205,7 @@ namespace Senderismo
 
         private void lstSenderistas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ///
                 lstRutasY.ItemsSource = listaSenderistas[lstSenderistas.SelectedIndex].rutas_realizadas_l;
                 lstRutasN.ItemsSource = listaSenderistas[lstSenderistas.SelectedIndex].participacion_futura;
                 lstRutasN.Items.Refresh();

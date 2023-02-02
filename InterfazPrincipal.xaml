@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Senderismo"
         mc:Ignorable="d"
-        Title="InterfazPrincipal" WindowStartupLocation="CenterScreen" Height="950" Width="1341" WindowState="Maximized">
-    <Grid Background="Gray" Margin="0,0,0,-6">
-        <TabControl x:Name="tabGeneral" Margin="10,15,31,10">
+        Title="InterfazPrincipal" WindowStartupLocation="CenterScreen" Height="897" Width="1287" WindowState="Maximized">
+    <Grid Background="Gray" Margin="0,0,0,15">
+        <TabControl x:Name="tabGeneral" Margin="10,15,0,10">
             <TabItem x:Name="tabSenderistas" Header="Gestión Senderistas">
-                <Grid Background="#FFE5E5E5" Margin="0,0,1,0" Height="864">
+                <Grid Background="#FF505050" Margin="0,0,1,0" Height="779">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="0*"/>
@@ -56,68 +56,76 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <Button Width="85" HorizontalAlignment="Left" Click="InfoListaClick">
+                        <Button Width="85" HorizontalAlignment="Left" Click="InfoListaClick" Background=" #FFE5E5E5" BorderBrush="#FFE5E5E5">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Image x:Name="infoListaS" HorizontalAlignment="Left" Source="/fotos/info.jpg" Height="30" VerticalAlignment="Top" Width="20"/>
                                 <Label Content="Info" Width="48"/>
                             </StackPanel>
                         </Button>
+                        <Button Width="85" HorizontalAlignment="Left" Click="InfoListaClick" Background=" #FFE5E5E5" BorderBrush="#FFE5E5E5">
+                        </Button>
                     </StackPanel>
-                    <GridSplitter HorizontalAlignment="Left" Margin="217,0,0,-1" Width="11"/>
+                    <GridSplitter HorizontalAlignment="Left" Margin="217,0,0,-1" Width="11" Background="Black"/>
                     <StackPanel Orientation="Vertical" Margin="254,0,0,45">
 
-                        <StackPanel Orientation="Vertical" Width="395" HorizontalAlignment="Left">
-                            <Image x:Name="imgMine" Height="128" Width="171" HorizontalAlignment="Left" Source="{Binding SelectedItem.foto_S, ElementName=lstSenderistas}"/>
-                            <Button x:Name="btnCambiarImg" Width="89" HorizontalAlignment="Left" MouseEnter="img_cambiar_enter" MouseLeave="img_cambiar_leave" Click="btn_Cambiar_click" Height="43">
-                                <StackPanel Height="36" Width="86" Orientation="Horizontal" Grid.Row="3">
-                                    <Image x:Name="imgCambiar" Height="25" Width="24" Source="fotos/editar_bn.png"/>
-                                    <TextBlock TextWrapping="Wrap" Text="Cambiar Imagen" Width="49"/>
+                        <StackPanel Orientation="Vertical" Width="273" HorizontalAlignment="Left">
+                            <Border BorderBrush="Black" CornerRadius="3" BorderThickness="5" Height="146" Width="270">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgMine" Height="128" Width="171" HorizontalAlignment="Left" Source="{Binding SelectedItem.foto_S, ElementName=lstSenderistas}"/>
+                                    <Button x:Name="btnCambiarImg" Width="40" VerticalAlignment="Top" Height="40" MouseLeave="img_cambiar_leave" Click="btn_Cambiar_click" Background="#FFE5E5E5" BorderBrush="#FFE5E5E5" HorizontalAlignment="Left">
+                                        <Image x:Name="imgCambiar" Height="40" Width="40" Source="fotos/intercambiar.png"/>
+                                    </Button>
+                                    <Button x:Name="btnCambiarImgInf" Width="40" VerticalAlignment="Top" Height="40" Background="#FFE5E5E5" BorderBrush="#FFE5E5E5" HorizontalAlignment="Left">
+                                        <Image Source="/fotos/info.jpg"/>
+                                    </Button>
                                 </StackPanel>
-                            </Button>
+                            </Border>
                         </StackPanel>
                         <Separator Height="10"/>
-                        <StackPanel Orientation="Horizontal" Height="120" Width="1030">
-                            <StackPanel Orientation="Vertical" Width="515" Height="118">
-                                <Label Content="Información personal" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Nombre:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="lblNombre" TextWrapping="Wrap" Text="{Binding SelectedItem.nombreS, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="190"/>
-                                    <Label Content="Apellidos:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="boxNombre" TextWrapping="Wrap" Text="{Binding SelectedItem.apellido, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="190"/>
+                        <Border BorderBrush="Black" CornerRadius="3" BorderThickness="5">
+                            <StackPanel Orientation="Horizontal" Height="120" Width="1030">
+                                <StackPanel Orientation="Vertical" Width="515" Height="118">
+                                    <Label Content="Información personal" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Nombre:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                        <TextBox x:Name="lblNombre" TextWrapping="Wrap" Text="{Binding SelectedItem.nombreS, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="190" Background="#FF828283" BorderThickness="2" BorderBrush="Black" SelectionBrush="White"/>
+                                        <Label Content="Apellidos:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                        <TextBox x:Name="boxNombre" TextWrapping="Wrap" Text="{Binding SelectedItem.apellido, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="190"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="DNI:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                        <Rectangle Width="23"/>
+                                        <TextBox x:Name="boxDNI" TextWrapping="Wrap" Text="{Binding SelectedItem.dni, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="190"/>
+                                        <Label Content="Edad:" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                        <Rectangle Width="23"/>
+                                        <TextBox x:Name="boxEdad" TextWrapping="Wrap" Text="{Binding SelectedItem.edad, ElementName=lstSenderistas}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="190"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Sexo:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                        <Rectangle Width="18"/>
+                                        <TextBox x:Name="boxSexo" TextWrapping="Wrap" Text="{Binding SelectedItem.sexo, ElementName=lstSenderistas}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="190"/>
+                                    </StackPanel>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="DNI:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    <Rectangle Width="23"/>
-                                    <TextBox x:Name="boxDNI" TextWrapping="Wrap" Text="{Binding SelectedItem.dni, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="190"/>
-                                    <Label Content="Edad:" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                    <Rectangle Width="23"/>
-                                    <TextBox x:Name="boxEdad" TextWrapping="Wrap" Text="{Binding SelectedItem.edad, ElementName=lstSenderistas}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="190"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Sexo:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    <Rectangle Width="18"/>
-                                    <TextBox x:Name="boxSexo" TextWrapping="Wrap" Text="{Binding SelectedItem.sexo, ElementName=lstSenderistas}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="190"/>
+                                <GridSplitter Width="1" Background="Gray"/>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="118" Width="515">
+                                    <Label Content="Información de contacto" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="teléfono fijo:" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                        <Rectangle Width="11"/>
+                                        <TextBox x:Name="boxFijo" TextWrapping="Wrap" Text="{Binding SelectedItem.telefono, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="192"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="teléfono móvil:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                        <TextBox x:Name="boxMovil" Width="190" TextWrapping="Wrap" Text="{Binding SelectedItem.telefono_m, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="Direción:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                        <Rectangle Width="32"/>
+                                        <TextBox x:Name="boxDir" Width="190" TextWrapping="Wrap" Text="{Binding SelectedItem.direccion, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                            <GridSplitter Width="1" Background="Gray"/>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="118" Width="515">
-                                <Label Content="Información de contacto" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="teléfono fijo:" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    <Rectangle Width="11"/>
-                                    <TextBox x:Name="boxFijo" TextWrapping="Wrap" Text="{Binding SelectedItem.telefono, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="192"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="teléfono móvil:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="boxMovil" Width="190" TextWrapping="Wrap" Text="{Binding SelectedItem.telefono_m, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="Direción:" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    <Rectangle Width="32"/>
-                                    <TextBox x:Name="boxDir" Width="190" TextWrapping="Wrap" Text="{Binding SelectedItem.direccion, ElementName=lstSenderistas}" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
+                        </Border>
                         <Separator Height="1"/>
                         <Label Content="Información de Rutas" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
                         <StackPanel Height="237" Orientation="Horizontal" HorizontalAlignment="Center" Width="1030">
