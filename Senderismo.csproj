@@ -149,21 +149,6 @@
     <Resource Include="fotos\guardar.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fotos\guardar_bn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="fotos\salir_c.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="fotos\salir_bn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="fotos\editar_bn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="fotos\editar_c.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="data\guias.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -221,9 +206,6 @@
     <Resource Include="fotos\castillo_consuegra.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fotos\info.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="fotos\intercambiar.png" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fotos\informacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\anadir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

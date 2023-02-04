@@ -26,6 +26,9 @@ namespace Senderismo
         private Boolean borrado = false;
         private List<Ruta> listaRutas;
         private List<PuntoInteres> listaPuntoInteres;
+        private List<String> n_guias = new List<string>();
+        private List <String> n_participantes = new List<string>();
+        private List <String> n_puntos = new List<string>();
         public InterfazPrincipal()
         {
             InitializeComponent();
@@ -45,6 +48,13 @@ namespace Senderismo
                 añadir_puntos_de_interes_a_ruta(p_aux);
             }
             copiarRutasG();
+            n_puntos.Add("Molino");
+            n_puntos.Add("Castillo");
+            n_puntos.Add("Mirador");
+            n_puntos.Add("Cueva");
+            n_puntos.Add("Puente");
+            ComboPunto.ItemsSource = n_puntos;
+            ComboGuia.ItemsSource = n_guias;
         }
 
         private void añadir_puntos_de_interes_a_ruta(PuntoInteres p_aux)
@@ -95,6 +105,7 @@ namespace Senderismo
                 guia_aux.telefono = node.Attributes["telefono"].Value;
                 guia_aux.edad = node.Attributes["edad"].Value;
                 aux.Add(guia_aux);
+                n_guias.Add(guia_aux.nombre_G);
             }
             return aux;
         }
@@ -213,21 +224,6 @@ namespace Senderismo
                 btnCambiarImg.Visibility = Visibility.Visible;
                 imgMine.Source = new BitmapImage(listaSenderistas[lstSenderistas.SelectedIndex].foto_S);
         }
-
-        private void btnGuardar_MouseEnter(object sender, MouseEventArgs e)
-        {
-            var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar.png", UriKind.Relative));
-            imgGuardar.Source = img_drag_ong;
-            imgGuardar_R.Source = img_drag_ong;
-        }
-
-        private void btnGuardar_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar_bn.png", UriKind.Relative));
-            imgGuardar.Source = img_drag_ong;
-            imgGuardar_R.Source = img_drag_ong;
-        }
-
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             if (!String.IsNullOrEmpty(boxNombre.Text) && !String.IsNullOrEmpty(boxDNI.Text) && !String.IsNullOrEmpty(boxEdad.Text)
@@ -257,19 +253,6 @@ namespace Senderismo
                 MessageBox.Show("Adevertencia rellene los parametros necesarios");
             }
         }
-
-        private void btnSalir_MouseEnter(object sender, MouseEventArgs e)
-        {
-            var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_c.jpg", UriKind.Relative));
-            imgSalir.Source = img_drag_ong;
-        }
-
-        private void btnSalir_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_bn.png", UriKind.Relative));
-            imgSalir.Source = img_drag_ong;
-        }
-
         private void btn_Cambiar_click(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
@@ -290,35 +273,9 @@ namespace Senderismo
             }
         }
 
-        private void img_cambiar_enter(object sender, MouseEventArgs e)
-        {
-            var img_enter = new BitmapImage(new Uri("/fotos/editar_c.jpg", UriKind.Relative));
-            imgCambiar.Source = img_enter;
-            btnEditar_Ru.Source = img_enter;
-        }
-
-        private void img_cambiar_leave(object sender, MouseEventArgs e)
-        {
-            var img_enter = new BitmapImage(new Uri("/fotos/editar_bn.png", UriKind.Relative));
-            imgCambiar.Source = img_enter;
-            btnEditar_Ru.Source = img_enter;
-        }
-
-        private void MouseEnter_btnGuardar_g(object sender, MouseEventArgs e)
-        {
-            var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar.png", UriKind.Relative));
-            imgGuardar_g.Source = img_drag_ong;
-        }
-
-        private void MouseLeabe_btnGuardar_g(object sender, MouseEventArgs e)
-        {
-            var img_drag_ong = new BitmapImage(new Uri("/fotos/guardar_bn.png", UriKind.Relative));
-            imgGuardar_g.Source = img_drag_ong;
-        }
-
         private void Click_btnGuardar_g(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(boxapellidos_g.Text) && !String.IsNullOrEmpty(boxdni_g.Text) && !String.IsNullOrEmpty(boxedad_g.Text) && !String.IsNullOrEmpty(boxtelefono_g.Text) && !String.IsNullOrEmpty(boxdir_g.Text)
+            if (!String.IsNullOrEmpty(boxapellidos_g.Text) && !String.IsNullOrEmpty(boxdni_g.Text) && !String.IsNullOrEmpty(boxtelefono_g.Text) && !String.IsNullOrEmpty(boxdir_g.Text)
                 && !String.IsNullOrEmpty(boxemail_g.Text) && !String.IsNullOrEmpty(boxnota_media.Text) && !String.IsNullOrEmpty(boxidiomas.Text) && !String.IsNullOrEmpty(lblName_G.Text))
             {
                 try
@@ -327,7 +284,6 @@ namespace Senderismo
                     guia_aux.nombre_G = lblName_G.Text;
                     guia_aux.apellido = boxapellidos_g.Text;
                     guia_aux.dni = boxdni_g.Text;
-                    guia_aux.edad = boxedad_g.Text;
                     guia_aux.telefono = boxtelefono_g.Text;
                     guia_aux.direccion = boxdir_g.Text;
                     guia_aux.email = boxemail_g.Text;
@@ -346,19 +302,6 @@ namespace Senderismo
                 MessageBox.Show("Adevertencia rellene los parametros necesarios");
             }
         }
-
-        private void MouseEnter_btnCambiarImg_g(object sender, MouseEventArgs e)
-        {
-            var img_enter = new BitmapImage(new Uri("/fotos/editar_c.jpg", UriKind.Relative));
-            imgCambiar_g.Source = img_enter;
-        }
-
-        private void MouseLeave_btnCambiarimg_g(object sender, MouseEventArgs e)
-        {
-            var img_enter = new BitmapImage(new Uri("/fotos/editar_bn.png", UriKind.Relative));
-            imgCambiar_g.Source = img_enter;
-        }
-
         private void Click_btnCambiarImg_g(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
@@ -382,21 +325,6 @@ namespace Senderismo
             MessageBox.Show("Gracias por utilizar la aplicación");
             Application.Current.Shutdown();
         }
-
-        private void btnSalir_g_MouseEnter(object sender, MouseEventArgs e)
-        {
-            var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_c.jpg", UriKind.Relative));
-            imgSalir_g.Source = img_drag_ong;
-            img_salir_G.Source = img_drag_ong;
-        }
-
-        private void btnSalir_g_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var img_drag_ong = new BitmapImage(new Uri("/fotos/salir_bn.jpg", UriKind.Relative));
-            imgSalir_g.Source = img_drag_ong;
-            img_salir_G.Source = img_drag_ong;
-        }
-
         private void Annadir_guia(object sender, RoutedEventArgs e)
         {
             guia guia_aux = new guia("Nuevo Elemento", new Uri("fotos/jose.jpg", UriKind.Relative), "", "","", new List<Ruta>(), new List<Ruta>(), 0, "", "", "", "");
@@ -445,32 +373,20 @@ namespace Senderismo
                 g_aux.Add(listaRutas[lstRutas.SelectedIndex].guia_r);
                 lstGuiasRuta.ItemsSource = g_aux;
                 lstPuntosInteres.ItemsSource = listaRutas[lstRutas.SelectedIndex].puntos;
+                List<Senderistas> l_aux2 = new List<Senderistas>();
+                List<Senderistas> l_aux = listaRutas[lstRutas.SelectedIndex].participantes;
+                foreach (Senderistas s in listaSenderistas)
+                {
+                    if (!l_aux.Contains(s))
+                    {
+                        l_aux2.Add(s);
+                    }
+                }
+                ComboParticipante.ItemsSource = l_aux2;
             }
             catch (Exception ex)
             {
                 
-            }
-        }
-
-        private void Annadir_Participante_Click(object sender, RoutedEventArgs e)
-        {
-            if (!String.IsNullOrEmpty(boxNuevoP.Text))
-            {
-                Senderistas sender_aux = buscarPorNombre(boxNuevoP.Text);
-                if (sender_aux != null)
-                {
-                    listaRutas[lstRutas.SelectedIndex].participantes.Add(sender_aux);
-                    lstParticipantes.Items.Refresh();
-                    añadir_ruta_a_participante(sender_aux);
-                    boxNuevoP.Text = "";
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró");
-                }
-            }
-            else {
-                MessageBox.Show("por favor indique el nombre del senderista que desea añadir");
             }
         }
 
@@ -560,7 +476,9 @@ namespace Senderismo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            guia g_aux = bucasPorNombre_G(boxGuiaRuta.Text);
+            guia g_aux = bucasPorNombre_G(ComboGuia.Text);
+            List<guia> list = new List<guia>();
+            list.Add(g_aux);
             if (g_aux != null)
             {
                 eliminar_guia_anterior(listaRutas[lstRutas.SelectedIndex].guia_r, listaRutas[lstRutas.SelectedIndex]);
@@ -575,8 +493,9 @@ namespace Senderismo
                 }
                 lstRutas.Items.Refresh();
                 lstGuiasRuta.Items.Refresh();
+                lstGuiasRuta.ItemsSource = list;
                 MessageBox.Show("Se cambio el guia");
-                boxGuiaRuta.Text = "";
+                ComboGuia.Text = "";
             }
             else {
                 MessageBox.Show("Por favor indique el nombre de un guia existente");
@@ -613,47 +532,13 @@ namespace Senderismo
                 int num_pi = lstPuntosInteres.SelectedIndex;
                 listaRutas[lstRutas.SelectedIndex].puntos.RemoveAt(num_pi);
                 lstPuntosInteres.Items.Refresh();
+                MessageBox.Show("Se elimino el punto de interes");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Selecione un indice valido de la lista puntos de interes; erro:" + ex.ToString());
             }
         }
-
-        private void Annadir_pi_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (!String.IsNullOrEmpty(boxPITipo.Text))
-                {
-                    PuntoInteres p_aux = new PuntoInteres(boxPITipo.Text, null, listaRutas[lstRutas.SelectedIndex].id);
-                    var dialog = new OpenFileDialog();
-                    dialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
-                    if (dialog.ShowDialog() == true)
-                    {
-                        try
-                        {
-                            p_aux.foto = new Uri(dialog.FileName, UriKind.Absolute);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error  :" + ex.ToString());
-                        }
-                    }
-                    listaRutas[lstRutas.SelectedIndex].puntos.Add(p_aux);
-                    lstPuntosInteres.Items.Refresh();
-                    boxPITipo.Text = "";
-                }
-                else
-                {
-                    MessageBox.Show("Error por favor indique el tipo de punto de interes en la casilla");
-                }
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Selecciones una ruta de la lista; error:" + ex.ToString());
-            }
-        }
-
         private void lstGuias_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
                 lstRutasYG.ItemsSource = listaGuias[lstGuias.SelectedIndex].rutas_ya_realizada;
@@ -674,6 +559,7 @@ namespace Senderismo
                     Ruta ruta_aux = listaRutas[lstRutas.SelectedIndex];
                     ruta_aux.foto_R = new Uri(dialog.FileName, UriKind.Absolute);
                     lstRutas.Items.Refresh();
+                    imgMine1.Source = new BitmapImage(new Uri(dialog.FileName, UriKind.Absolute));
                 }
                 catch (Exception ex)
                 {
@@ -733,6 +619,144 @@ namespace Senderismo
                 "\n\t 1- Click derecho sobre la lista \n\t 2 - Click izquierdo en añadir senderista\n " +
                 "Para Eliminar un senderista realizar los sigueintes pasos:" +
                 "\n\t 1- Click derecho sobre el senderista que se desea eliminar \n\t 2- Click izquierdo en eliminar senderista");
+        }
+
+        private void lstParticipantes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<string> l_aux2 = new List<string>();
+            List<Senderistas> l_aux = listaRutas[lstRutas.SelectedIndex].participantes;
+            foreach (Senderistas s in listaSenderistas) {
+                if (!l_aux.Contains(s)) {
+                    l_aux2.Add(s.nombreS);
+                }
+            }
+            ComboParticipante.ItemsSource = l_aux2;
+        }
+
+        private void botonAnnadirP_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (!String.IsNullOrEmpty(ComboParticipante.Text))
+            {
+                Senderistas sender_aux = buscarPorNombre(ComboParticipante.Text);
+                if (sender_aux != null)
+                {
+                    listaRutas[lstRutas.SelectedIndex].participantes.Add(sender_aux);
+                    lstParticipantes.Items.Refresh();
+                    lstParticipantes.SelectedItem = sender_aux;
+                    añadir_ruta_a_participante(sender_aux);
+                    ComboParticipante.Text = "";
+                    MessageBox.Show("Se añadio Participante");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró");
+                }
+            }
+            else
+            {
+                MessageBox.Show("por favor indique el nombre del senderista que desea añadir");
+            }
+        }
+
+        private void botonAnnadirPun_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(ComboPunto.Text))
+                {
+                    PuntoInteres p_aux = new PuntoInteres(ComboPunto.Text, null, listaRutas[lstRutas.SelectedIndex].id);
+                    var dialog = new OpenFileDialog();
+                    dialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
+                    if (dialog.ShowDialog() == true)
+                    {
+                        try
+                        {
+                            p_aux.foto = new Uri(dialog.FileName, UriKind.Absolute);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error  :" + ex.ToString());
+                        }
+                    }
+                    listaRutas[lstRutas.SelectedIndex].puntos.Add(p_aux);
+                    lstPuntosInteres.Items.Refresh();
+                    ComboPunto.Text = "";
+                    MessageBox.Show("Se añadio el punto de interes");
+                }
+                else
+                {
+                    MessageBox.Show("Error por favor indique el tipo de punto de interes en la casilla");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Selecciones una ruta de la lista; error:" + ex.ToString());
+            }
+        }
+
+        private void BinfoR_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayuda a usuarios:\n Para añadir una nueva Ruta, realizar los siguientes pasos:" +
+                "\n\t 1- Click derecho sobre la lista \n\t 2 - Click izquierdo en añadir ruta\n " +
+                "Para Eliminar una ruta realizar los sigueintes pasos:" +
+                "\n\t 1- Click derecho sobre la ruta que se desea eliminar \n\t 2- Click izquierdo en eliminar ruta");
+        }
+
+        private void btnCambiarImgInfR_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayuda a usuarios:\n Para cambiar la imagen de la ruta, hacer click en el icono de la izquierda.\n Posteriormente se abriara un cuadro para seleccionar la imagen.");
+            btnEditar_Ru.Focus();
+        }
+
+        private void btnInfoGRuta_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayuda a usuarios:\n Este es el formulario de la informacion de la ruta, para cambiar cualquier información hacer click sobre el cuadro de texto deseado.\n" +
+                "ES NECESARIO RELLENAR EL FORMULARIO COMPLETO ANTES DE GUARDAR");
+        }
+
+        private void btnInfoGRutaGuia_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayudas para usuarios:\n \t1- Para cambiar el guia seleccionar el nombre correspondiente en el desplegable.\n\t 2- Hacer click en el icono '+' de la derecha");
+            ComboGuia.Focus();
+        }
+
+        private void btnInfoGRutaParticipante_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayudas para usuarios:\n Para AÑADIR participante:\n\t 1- Seleccionar el nombre en el desplegable.\n\t 2- Hacer click en el icono '+' de la derecha \n" +
+                "Para ELIMINAR un participante:\n\t 1- Hacer click derecho sobre el participante que se desea eliminar.\n\t 2- Hacer clcik izquierdo sobre el boton eliminar participante ");
+            ComboParticipante.Focus();
+        }
+
+        private void btnInfoGRutaPInteres_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayudas para usuarios:\n Para AÑADIR un punto de interes:\n\t 1- Seleccionar el tipo de punto de interes en el desplegable.\n\t 2- Hacer click en el icono '+' de la derecha \n" +
+    "Para ELIMINAR un punto de interes:\n\t 1- Hacer click derecho sobre el punto de interes que se desea eliminar.\n\t 2- Hacer clcik izquierdo sobre el boton eliminar punto de interes ");
+            ComboPunto.Focus();
+        }
+
+        private void btnCambiarImgInf_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayuda a usuarios:\n Para cambiar la imagen del senderista, hacer click en el icono de la izquierda.\n Posteriormente se abriara un cuadro para seleccionar la imagen.");
+            btnCambiarImg.Focus();
+        }
+
+        private void btnInfoPerso_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayuda a usuarios:\n Este es el formulario de la informacion personal del senderista, para cambiar cualquier información hacer click sobre el cuadro de texto deseado.\n" +
+    "ES NECESARIO RELLENAR EL FORMULARIO COMPLETO ANTES DE GUARDAR");
+        }
+
+        private void btnInfoContacto_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayuda a usuarios:\n Este es el formulario de la informacion de contacto del senderista, para cambiar cualquier información hacer click sobre el cuadro de texto deseado.\n" +
+"ES NECESARIO RELLENAR EL FORMULARIO COMPLETO ANTES DE GUARDAR");
+        }
+
+        private void btnInfoRutas_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Mensaje de ayuda a usuarios:\n Estas listas muestran la información de las rutas en la que han participado los senderistas. Esta información es solo visual no se puede cambiar desde aquí.\n " +
+                "ADVERTENCIA para modificar la participacion en rutas acceder a la pestaña rutas.");
         }
     }
 }
