@@ -76,3 +76,5 @@ D:\ESI\EntragaIPO22-23\SendersoloV1.0.0\obj\Debug\Senderismo.csproj.GenerateReso
 D:\ESI\EntragaIPO22-23\SendersoloV1.0.0\obj\Debug\Senderismo.csproj.CoreCompileInputs.cache
 D:\ESI\EntragaIPO22-23\SendersoloV1.0.0\obj\Debug\Senderismo.exe
 D:\ESI\EntragaIPO22-23\SendersoloV1.0.0\obj\Debug\Senderismo.pdb
+D:\ESI\EntragaIPO22-23\Repositorio\IPO1-22-23\obj\Debug\recursos.baml
+D:\ESI\EntragaIPO22-23\Repositorio\IPO1-22-23\obj\Debug\App.baml

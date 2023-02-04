@@ -62,6 +62,10 @@
     <Compile Include="InicioU.xaml.cs">
       <DependentUpon>InicioU.xaml</DependentUpon>
     </Compile>
+    <Page Include="recursos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InterfazPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +225,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fotos\intercambiar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\cerrar-sesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fotos\informacion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
