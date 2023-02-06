@@ -390,13 +390,13 @@ namespace Senderismo
                     g_aux.Add(listaRutas[lstRutas.SelectedIndex].guia_r);
                     lstGuiasRuta.ItemsSource = g_aux;
                     lstPuntosInteres.ItemsSource = listaRutas[lstRutas.SelectedIndex].puntos;
-                    List<Senderistas> l_aux2 = new List<Senderistas>();
+                    List<String> l_aux2 = new List<String>();
                     List<Senderistas> l_aux = listaRutas[lstRutas.SelectedIndex].participantes;
                     foreach (Senderistas s in listaSenderistas)
                     {
                         if (!l_aux.Contains(s))
                         {
-                            l_aux2.Add(s);
+                            l_aux2.Add(s.nombreS);
                         }
                     }
                     ComboParticipante.ItemsSource = l_aux2;
@@ -438,7 +438,6 @@ namespace Senderismo
             }
             else
             {
-                MessageBox.Show("Ruta no realizada aun");
                 foreach (Ruta r_aux in s.participacion_futura)
                 {
                     if (r_aux.nombre.Equals(listaRutas[lstRutas.SelectedIndex].nombre))
