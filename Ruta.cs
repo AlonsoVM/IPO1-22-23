@@ -31,6 +31,7 @@ namespace Senderismo
 
         public List<PuntoInteres> puntos { get; set; }
 
+
         public Ruta(string nombre, int id, string provincia, string origen, string destino, string h_salida, string fecha_salida, string duracion, string dificultad, Uri f, Boolean realizada, List<PuntoInteres> p) {
             this.foto_R = f;
             this.nombre = nombre;

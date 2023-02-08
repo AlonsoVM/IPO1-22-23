@@ -139,6 +139,7 @@ namespace Senderismo
                 ruta_aux.duracion = node.Attributes["duracion"].Value;
                 ruta_aux.fecha_salida = node.Attributes["fecha_salida"].Value;
                 ruta_aux.dificultad = node.Attributes["dificultad"].Value;
+                ruta_aux.realizada = Convert.ToBoolean(node.Attributes["realizada"].Value);
                 ruta_aux.puntos = new List<PuntoInteres>();
                 ruta_aux.participantes = new List<Senderistas>();
                 ruta_aux.guia_r = listaGuias[0];
@@ -188,7 +189,15 @@ namespace Senderismo
         {
             foreach (Ruta r_aux in listaRutas)
             {
-                s_aux.rutas_realizadas_l.Add(r_aux);
+                if (r_aux.realizada == true)
+                {
+                    s_aux.rutas_realizadas_l.Add(r_aux);
+                }
+                else {
+                    s_aux.participacion_futura.Add(r_aux);
+
+                }
+
             }
         }
 

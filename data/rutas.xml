@@ -1,5 +1,6 @@
 <Rutas>
-	<Ruta foto="/fotos/mingoliva.jpg" nombre="mingoliva" id="0" provincia="Madridejos" origen="hermita de madridejos" destino="monte mingoliva" hora_salida="10:00" duracion="2:30h" fecha_salida="12/01/2023" dificultad="media"/>
-	<Ruta foto="/fotos/pizarro.jpg" nombre="Los pirzarros" id="1" provincia="Madridejos" origen="hermita de madridejos" destino="monte de los pizarros" hora_salida="10:00" duracion="2:30h" fecha_salida="12/01/2023" dificultad="media"/>
-	<Ruta foto="/fotos/consuegra.jpg" nombre="Castillo de consuegra" id="2" provincia="Consuegra" origen="Estación de autobuses" destino="Castillo de consuegra" hora_salida="12:00" duracion="2:30h" fecha_salida="10/01/2023" dificultad="facil"/>
+	<Ruta foto="/fotos/mingoliva.jpg" nombre="Mingoliva" id="0" provincia="Madridejos" origen="Hermita de Madridejos" destino="monte mingoliva" hora_salida="10:00" duracion="2:30h" fecha_salida="12/01/2023" dificultad="media" realizada="True"/>
+	<Ruta foto="/fotos/pizarro.jpg" nombre="Los pirzarros" id="1" provincia="Madridejos" origen="Hermita de Madridejos" destino="monte de los pizarros" hora_salida="10:00" duracion="2:30h" fecha_salida="12/01/2023" dificultad="media" realizada="True"/>
+	<Ruta foto="/fotos/consuegra.jpg" nombre="Castillo de consuegra" id="2" provincia="Consuegra" origen="Estación de autobuses" destino="Castillo de consuegra" hora_salida="12:00" duracion="2:30h" fecha_salida="10/01/2023" dificultad="facil" realizada="True"/>
+	<Ruta foto="/fotos/castrola.jpg" nombre="Cueva Castrola" id="3" provincia="Madridejos" origen="Hermita de Madridejos" destino="Cueva Castrola" hora_salida="12:00" duracion="2:30h" fecha_salida="10/01/2023" dificultad="dificil" realizada="False"/>
 </Rutas>
