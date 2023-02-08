@@ -309,6 +309,12 @@ namespace Senderismo
                     guia_aux.nota = float.Parse(boxnota_media.Text);
                     lstGuias.Items.Refresh();
                     MessageBox.Show("Se guardaron los cambios correctamente");
+                    List<String> l_aux = new List<String>();
+                    foreach (guia g_aux in listaGuias)
+                    {
+                        l_aux.Add(g_aux.nombre_G);
+                    }
+                    ComboGuia.ItemsSource = l_aux;
                 }
                 catch (Exception ex)
                 {
@@ -353,6 +359,11 @@ namespace Senderismo
             lstGuias.SelectedItem = guia_aux;
             MessageBox.Show("Ya se pude introducir información del nuevo senderitsta");
             mostrar3();
+            List<String> l_aux = new List<String>();
+            foreach (guia g_aux in listaGuias) {
+                l_aux.Add(g_aux.nombre_G);
+            }
+            ComboGuia.ItemsSource = l_aux;
         }
 
         private void Eliminar_guia(object sender, RoutedEventArgs e)
@@ -364,6 +375,12 @@ namespace Senderismo
                 MessageBox.Show("Se elimino al guia");
                 lstGuias.SelectedItem = null;
                 ocultar3();
+                List<String> l_aux = new List<String>();
+                foreach (guia g_aux in listaGuias)
+                {
+                    l_aux.Add(g_aux.nombre_G);
+                }
+                ComboGuia.ItemsSource = l_aux;
             }
             catch (Exception ex)
             {
