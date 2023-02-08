@@ -593,6 +593,7 @@ namespace Senderismo
                 lstRutasYG.Items.Refresh();
                 lstRutasNG.Items.Refresh();
                 mostrar3();
+                imgMine_G.Source = new BitmapImage(listaGuias[lstGuias.SelectedIndex].foto_G);
             }
 
         }
